@@ -1,7 +1,11 @@
 <template>
   <span>
     <h4 class="header-title mt-5">New restaurants on Holt</h4>
-    <restaurant-card />
+    <d-row>
+      <restaurant-card />
+      <restaurant-card />
+      <restaurant-card />
+    </d-row>
   </span>
 </template>
 

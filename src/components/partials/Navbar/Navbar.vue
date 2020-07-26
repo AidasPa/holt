@@ -10,7 +10,7 @@
     <d-navbar toggleable="md" class="navbar">
       <d-navbar-toggle target="nav-collapse"></d-navbar-toggle>
       <d-navbar-brand>
-        <h6 class="my-auto mr-4">Holt</h6>
+        <img :src="require('@/assets/img/logo.png')" width="80px">
       </d-navbar-brand>
 
       <d-collapse is-nav id="nav-collapse">

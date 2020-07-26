@@ -18,6 +18,9 @@ export default {
 };
 </script>
 <style lang="scss">
+body {
+  overflow-x: hidden;
+}
 .holt-row {
   justify-content: center;
 }
