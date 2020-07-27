@@ -19,8 +19,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import CategoryCard from '@/components/restaurant/CategoryCard.vue';
-import CategoryCardLoader from '@/components/restaurant/CategoryCardLoader.vue';
+import CategoryCard from '@/components/common/CategoryCard.vue';
+import CategoryCardLoader from '@/components/common/CategoryCardLoader.vue';
 
 export default {
   components: {

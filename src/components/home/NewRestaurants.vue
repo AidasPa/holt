@@ -30,8 +30,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import RestaurantCard from '@/components/restaurant/RestaurantCard.vue';
-import RestaurantCardLoader from '@/components/restaurant/RestaurantCardLoader.vue';
+import RestaurantCard from '@/components/common/RestaurantCard.vue';
+import RestaurantCardLoader from '@/components/common/RestaurantCardLoader.vue';
 
 export default {
   components: {
