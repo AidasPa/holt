@@ -1,7 +1,14 @@
 <template>
   <d-col :md="4" :xs="12">
     <d-card @click="$router.push('restaurant/' + id)">
-      <d-card-img class="restaurant-card__img" :src="image" />
+      <blur-hash-image
+        class="card-img-top"
+        width="590"
+        height="332"
+        :hash="imageBlurhash"
+        :src="image"
+        alt="green lawn grass during daytime"
+      />
       <d-card-body class="restaurant-card__body">
         <h5 class="restaurant-card__text-lead">{{ title }}</h5>
         <p class="text-muted">{{ formatDescription }}</p>
@@ -24,6 +31,7 @@ export default {
     categories: Array,
     averageDeliveryTime: Number,
     image: String,
+    imageBlurhash: String,
   },
   computed: {
     formatCategories() {

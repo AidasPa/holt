@@ -15,6 +15,7 @@
     "shards-vue": "^1.0.7",
     "twemoji": "^13.0.1",
     "vue": "^2.6.11",
+    "vue-blurhash": "^0.1.2",
     "vue-content-loader": "^0.2.3",
     "vue-fa": "^2.0.1",
     "vue-fragment": "^1.5.1",

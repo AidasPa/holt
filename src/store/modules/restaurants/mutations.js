@@ -8,10 +8,10 @@ export default {
     payload.forEach((restaurant) => {
       newRestaurants.push({ ...restaurant, new: true });
     });
-    state.restaurants = [...state.restaurants, ...newRestaurants];
+    state.restaurants = newRestaurants;
   },
   [SET_CATEGORIES](state, payload) {
-    state.categories = [...state.categories, ...payload];
+    state.categories = payload;
   },
   [HIDE_NEW_RESTAURANTS_LOADER](state) {
     state.loader.newRestaurants = false;
