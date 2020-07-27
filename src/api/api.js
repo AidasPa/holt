@@ -25,6 +25,7 @@ export default {
       const response = await api().get('/restaurants/recent');
       success(response.data);
     } catch (context) {
+      console.log(context);
       failure(context.response.data);
     }
   },

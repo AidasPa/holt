@@ -1,4 +1,4 @@
-import { SET_NEW_RESTAURANTS } from './mutation-types';
+import { SET_NEW_RESTAURANTS, HIDE_NEW_RESTAURANTS_LOADER } from './mutation-types';
 
 export default {
   [SET_NEW_RESTAURANTS](state, payload) {
@@ -8,4 +8,8 @@ export default {
     });
     state.restaurants = [...state.restaurants, ...newRestaurants];
   },
+  [HIDE_NEW_RESTAURANTS_LOADER](state) {
+    state.loader.newRestaurants = false;
+  },
+
 };
