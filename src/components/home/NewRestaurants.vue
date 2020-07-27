@@ -11,10 +11,15 @@
 
 <script>
 import RestaurantCard from '@/components/restaurant/RestaurantCard.vue';
+import { mapActions } from 'vuex';
 
 export default {
   components: {
     RestaurantCard,
   },
+  created() {
+    this.$store.dispatch('restaurants/fetchNewRestaurants');
+  },
+  methods: mapActions(['restaurants']),
 };
 </script>
