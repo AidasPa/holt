@@ -1,6 +1,6 @@
 <template>
   <d-col :md="4" :xs="12">
-    <d-card>
+    <!-- <d-card>
       <d-card-img
         class="restaurant-card__img"
         src="https://prod-wolt-venue-images-cdn.wolt.com/s/carwYVISeKpjfkYNd4ImZSJL2cwwpK2SqRSAjruXpEA/5ef6049aa381bb84c1e5f4e4/ba548c0e-b866-11ea-a09d-8233c40c2e21_0d0419ceaa062ea84acdfff29742bbba.jpeg"
@@ -12,12 +12,21 @@
       <d-card-footer class="restaurant-card__footer text-muted">
         €€ · 25 min · 😃 · hamburger, mexican, pasta
       </d-card-footer>
-    </d-card>
+    </d-card> -->
+    <content-loader />
+    <bullet-list-loader />
   </d-col>
 </template>
 
 <script>
-export default {};
+import { ContentLoader, BulletListLoader } from 'vue-content-loader';
+
+export default {
+  components: {
+    ContentLoader,
+    BulletListLoader,
+  },
+};
 </script>
 
 <style lang="scss">
