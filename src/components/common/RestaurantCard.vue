@@ -5,8 +5,8 @@
         class="card-img-top"
         width="590"
         height="332"
-        :hash="imageBlurhash"
-        :src="image"
+        :hash="image.blurhash"
+        :src="image.url"
         alt="green lawn grass during daytime"
       />
       <d-card-body class="restaurant-card__body">
@@ -30,8 +30,7 @@ export default {
     rating: Number,
     categories: Array,
     averageDeliveryTime: Number,
-    image: String,
-    imageBlurhash: String,
+    image: Object,
   },
   computed: {
     formatCategories() {

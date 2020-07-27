@@ -13,7 +13,6 @@
           rating,
           categories,
           avg_delivery_time,
-          image_blurhash,
           id
         },
         i) in getRestaurants"
@@ -24,7 +23,6 @@
         :categories="categories"
         :average-delivery-time="avg_delivery_time"
         :image="image"
-        :image-blurhash="image_blurhash"
         :id="id"
       />
     </d-row>
