@@ -3,13 +3,14 @@
     <restaurant-image :image="image" />
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">
-        l
+        <restaurant-header />
       </d-col>
     </d-row>
   </span>
 </template>
 <script>
 import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
+import RestaurantHeader from '@/components/restaurant/RestaurantHeader.vue';
 
 export default {
   props: {
@@ -17,6 +18,7 @@ export default {
   },
   components: {
     RestaurantImage,
+    RestaurantHeader,
   },
   data() {
     return {
