@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <navbar />
-    <d-row class="holt-row mt-4">
-      <d-col :md="7" :xs="12">
-        <router-view />
-      </d-col>
-    </d-row>
+    <router-view />
   </div>
 </template>
 <script>

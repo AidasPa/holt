@@ -1,10 +1,12 @@
 <template>
-  <span>
-    <hero-card />
-    <new-restaurants />
-    <categories />
-    <div style="height:800px;"></div>
-  </span>
+  <d-row class="holt-row mt-4">
+    <d-col :md="7" :xs="12">
+      <hero-card />
+      <new-restaurants />
+      <categories />
+      <div style="height: 800px;"></div>
+    </d-col>
+  </d-row>
 </template>
 
 <script>
