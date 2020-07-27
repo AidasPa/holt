@@ -1,6 +1,6 @@
 <template>
   <d-col :md="4" :xs="12">
-    <d-card>
+    <d-card @click="$router.push('restaurant/' + id)">
       <d-card-img class="restaurant-card__img" :src="image" />
       <d-card-body class="restaurant-card__body">
         <h5 class="restaurant-card__text-lead">{{ title }}</h5>
@@ -17,6 +17,7 @@
 <script>
 export default {
   props: {
+    id: Number,
     title: String,
     description: String,
     rating: Number,

@@ -7,19 +7,34 @@
       <d-modal-body>👋 Hello there!</d-modal-body>
     </d-modal>
 
-    <d-navbar toggleable="md" class="navbar">
+    <d-navbar
+      toggleable="md"
+      :class="[
+        'navbar',
+        isRestaurantPage && [...'navbar--transparent', ' navbar-dark'],
+      ]"
+    >
       <d-navbar-toggle target="nav-collapse"></d-navbar-toggle>
       <d-navbar-brand>
-        <img :src="require('@/assets/img/logo.png')" width="80px">
+        <img
+          @click="$router.push('/')"
+          :src="require('@/assets/img/logo.png')"
+          :class="[isRestaurantPage && 'navbar__img-white']"
+          width="80px"
+        />
       </d-navbar-brand>
 
       <d-collapse is-nav id="nav-collapse">
         <d-navbar-nav class="ml-auto">
-          <d-input-group seamless>
+          <d-input-group seamless :class="[]">
             <d-input-group-text slot="prepend">
               <fa class="text-black" :icon="['fas', 'search']" />
             </d-input-group-text>
-            <d-input size="sm" placeholder="Search..." />
+            <d-input
+              :class="[isRestaurantPage && 'navbar-transparent-search__input']"
+              size="sm"
+              placeholder="Search..."
+            />
           </d-input-group>
         </d-navbar-nav>
 
@@ -58,6 +73,11 @@ export default {
       this.showLoginModal = false;
     },
   },
+  computed: {
+    isRestaurantPage() {
+      return this.$route.name === 'Restaurant';
+    },
+  },
   components: {
     // NavbarLoginModal,
   },
@@ -69,5 +89,22 @@ export default {
   border-bottom: 1px solid lightgrey;
   padding-left: 400px !important;
   padding-right: 400px !important;
+  &--transparent {
+    background-color: transparent;
+    border-bottom: none !important;
+  }
+  &__img-white {
+    filter: invert(1)
+  }
+}
+.navbar-transparent-search {
+  &__input {
+    background-color: transparent !important;
+    border: 1.4px solid white !important;
+    color: white !important;
+  }
+  &__input::placeholder {
+    color: white !important;
+  }
 }
 </style>

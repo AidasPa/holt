@@ -13,6 +13,7 @@
           rating,
           categories,
           avg_delivery_time,
+          id
         },
         i) in getRestaurants"
         :key="i"
@@ -22,6 +23,7 @@
         :categories="categories"
         :average-delivery-time="avg_delivery_time"
         :image="image"
+        :id="id"
       />
     </d-row>
   </span>
