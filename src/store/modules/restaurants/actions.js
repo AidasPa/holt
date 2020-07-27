@@ -1,7 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-return-assign */
 import api from '@/api/api';
-import { SET_NEW_RESTAURANTS, HIDE_NEW_RESTAURANTS_LOADER } from './mutation-types';
+import {
+  SET_NEW_RESTAURANTS, HIDE_NEW_RESTAURANTS_LOADER, HIDE_CATEGORIES_LOADER, SET_CATEGORIES,
+} from './mutation-types';
 
 export default {
   async fetchNewRestaurants({ commit }) {
@@ -9,6 +11,16 @@ export default {
       commit(SET_NEW_RESTAURANTS, data);
       setTimeout(() => {
         commit(HIDE_NEW_RESTAURANTS_LOADER);
+      }, 2000);
+    }, (error) => {
+      console.error(error);
+    });
+  },
+  async fetchCategories({ commit }) {
+    api.fetchCategories((data) => {
+      commit(SET_CATEGORIES, data);
+      setTimeout(() => {
+        commit(HIDE_CATEGORIES_LOADER);
       }, 2000);
     }, (error) => {
       console.error(error);

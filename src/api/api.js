@@ -29,4 +29,13 @@ export default {
       failure(context.response.data);
     }
   },
+  async fetchCategories(success, failure) {
+    try {
+      const response = await api().get('/categories');
+      success(response.data);
+    } catch (context) {
+      console.log(context);
+      failure(context.response.data);
+    }
+  },
 };
