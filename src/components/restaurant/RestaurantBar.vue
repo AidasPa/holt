@@ -1,0 +1,39 @@
+<template>
+  <!-- eslint-disable max-len  -->
+  <d-card class="restaurant-bar">
+    <d-card-body class="restaurant-bar__card-body">
+      <d-row>
+        <!-- <d-col :md="3"> -->
+          <h3 class="restaurant-bar__rating">
+            🥴 8.4
+            <span class="text-muted restaurant-bar__rating--total"
+              >Out of 10</span
+            >
+          </h3>
+          <d-button class="restaurant-bar__button mb-4" outline theme="light">🧡 Favorite</d-button>
+          <d-button class="restaurant-bar__button mb-4" outline theme="light">Order together</d-button>
+          <d-button class="float-right ml-auto mb-4" outline theme="light">Order together</d-button>
+        <!-- </d-col>
+        <d-col>
+        </d-col> -->
+      </d-row>
+    </d-card-body>
+  </d-card>
+</template>
+<style lang="scss">
+.restaurant-bar {
+  margin-top: -70px;
+  &__button {
+    margin-left: 25px;
+  }
+  &__card-body {
+    padding-bottom: .5rem !important;
+  }
+  &__rating {
+    font-weight: 600;
+    &--total {
+      font-size: 12px;
+    }
+  }
+}
+</style>

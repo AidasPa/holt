@@ -24,7 +24,7 @@
     align-content: center;
   }
   &__currency {
-    line-height: 2.5;
+    line-height: 1.2;
     width: 100%;
   }
   &-category {
