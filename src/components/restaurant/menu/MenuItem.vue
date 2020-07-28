@@ -24,7 +24,6 @@
             class="menu-item__card-body-image"
             :hash="image.blurhash"
             :src="image.url"
-            alt="green lawn grass during daytime"
           />
         </d-col>
       </d-row>
@@ -67,7 +66,7 @@ export default {
     }
     &-body {
       padding: 0 1rem;
-      padding-bottom: 0.5rem;
+      padding-bottom: 1rem;
       &-title {
         line-height: 15px;
         font-size: 18px;
