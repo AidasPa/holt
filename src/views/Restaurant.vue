@@ -17,6 +17,7 @@
           :categories="restaurant.categories"
         />
         <restaurant-bar :rating="restaurant.rating" />
+        <restaurant-content />
       </d-col>
     </d-row>
   </span>
@@ -27,6 +28,8 @@ import Loading from 'vue-loading-overlay';
 import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
 import RestaurantHeader from '@/components/restaurant/RestaurantHeader.vue';
 import RestaurantBar from '@/components/restaurant/RestaurantBar.vue';
+import RestaurantContent from '@/components/restaurant/RestaurantContent.vue';
+
 import api from '@/api/api';
 
 export default {
@@ -37,6 +40,7 @@ export default {
     RestaurantImage,
     RestaurantHeader,
     RestaurantBar,
+    RestaurantContent,
     Loading,
   },
   created() {
