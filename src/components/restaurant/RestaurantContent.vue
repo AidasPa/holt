@@ -20,9 +20,10 @@
       />
     </d-col>
     <d-col :md="3">
-      <div class="">
-        test
-      </div>
+      <restaurant-venue
+        :phone-number="venue.phone_number"
+        :address="venue.address"
+      />
     </d-col>
     <div style="height: 800px;"></div>
   </d-row>
@@ -31,13 +32,18 @@
 import { mapGetters } from 'vuex';
 
 import MenuSection from './menu/MenuSection.vue';
+import RestaurantVenue from './RestaurantVenue.vue';
 
 export default {
+  props: {
+    venue: Object,
+  },
   computed: mapGetters('menu', {
     categories: 'getMenuCategories',
   }),
   components: {
     MenuSection,
+    RestaurantVenue,
   },
 };
 </script>

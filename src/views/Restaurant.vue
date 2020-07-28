@@ -17,7 +17,7 @@
           :categories="restaurant.categories"
         />
         <restaurant-bar :rating="restaurant.rating" />
-        <restaurant-content />
+        <restaurant-content :venue="restaurant"/>
       </d-col>
     </d-row>
   </span>
