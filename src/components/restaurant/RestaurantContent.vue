@@ -1,21 +1,23 @@
 <template>
   <d-row class="restaurant-content__row">
     <d-col :md="2">
-      <div class="">
-        <h5 class="text-underline restaurant-content__category--active">
-          Mesainiai
+      <div class="mt-1">
+        <h5
+          class="text-underline restaurant-content__category"
+          v-for="{ title, id } in categories"
+          :key="id"
+        >
+          {{ title }}
         </h5>
-        <h5 class="text-underline restaurant-content__category">Mesainiai</h5>
-        <h5 class="text-underline restaurant-content__category">Mesainiai</h5>
-        <h5 class="text-underline restaurant-content__category">Mesainiai</h5>
-        <h5 class="text-underline restaurant-content__category">Mesainiai</h5>
-        <h5 class="text-underline restaurant-content__category">Mesainiai</h5>
       </div>
     </d-col>
     <d-col :md="7">
-      <div class="">
-        test
-      </div>
+      <menu-section
+        v-for="{ title, id } in categories"
+        :key="id"
+        :title="title"
+        :id="id"
+      />
     </d-col>
     <d-col :md="3">
       <div class="">
@@ -26,7 +28,18 @@
   </d-row>
 </template>
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+
+import MenuSection from './menu/MenuSection.vue';
+
+export default {
+  computed: mapGetters('menu', {
+    categories: 'getMenuCategories',
+  }),
+  components: {
+    MenuSection,
+  },
+};
 </script>
 <style lang="scss">
 .restaurant-content {
@@ -36,6 +49,8 @@ export default {};
   &__category {
     color: grey;
     display: inline-block;
+    font-size: 1.05rem;
+    width: 100%;
     &--active {
       color: black;
       text-decoration: underline;

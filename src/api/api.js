@@ -6,7 +6,6 @@ function createApiInstance() {
   if ('token' in localStorage) {
     return;
   }
-
   // eslint-disable-next-line consistent-return
   return axios.create({
     baseURL: API_URL,
@@ -39,6 +38,15 @@ export default {
   async fetchRestaurant(success, failure, id) {
     try {
       const response = await api().get(`/restaurants/${id}`);
+      success(response.data);
+    } catch (context) {
+      failure(context);
+    }
+  },
+
+  async fetchRestaurantMenu(success, failure, id) {
+    try {
+      const response = await api().get(`/restaurants/${id}/menu`);
       success(response.data);
     } catch (context) {
       failure(context);

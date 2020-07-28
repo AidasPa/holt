@@ -94,7 +94,7 @@ export default {
     border-bottom: none !important;
   }
   &__img-white {
-    filter: invert(1)
+    filter: invert(1);
   }
 }
 .navbar-transparent-search {
@@ -102,9 +102,9 @@ export default {
     background-color: transparent !important;
     border: 1.4px solid white !important;
     color: white !important;
-  }
-  &__input::placeholder {
-    color: white !important;
+    &::placeholder {
+      color: white !important;
+    }
   }
 }
 </style>

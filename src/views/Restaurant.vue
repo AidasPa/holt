@@ -24,6 +24,7 @@
 </template>
 <script>
 import Loading from 'vue-loading-overlay';
+import { mapActions } from 'vuex';
 
 import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
 import RestaurantHeader from '@/components/restaurant/RestaurantHeader.vue';
@@ -44,6 +45,7 @@ export default {
     Loading,
   },
   created() {
+    this.fetchRestaurantMenu(this.id);
     api.fetchRestaurant(
       (data) => {
         this.restaurant = data;
@@ -64,5 +66,6 @@ export default {
       },
     };
   },
+  methods: mapActions('menu', ['fetchRestaurantMenu']),
 };
 </script>
