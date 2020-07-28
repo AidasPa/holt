@@ -4,9 +4,10 @@
       <d-col :md="12">
         <h4>{{ title }}</h4>
         <menu-item
-          v-for="{ title, description, id } in items"
+          v-for="{ title, description, image, id } in items"
           :key="id"
           :title="title"
+          :image="image"
           :description="description"
         />
       </d-col>
@@ -24,11 +25,6 @@ export default {
   },
   components: {
     MenuItem,
-  },
-  data() {
-    return {
-      yeet: '???',
-    };
   },
   computed: {
     items() {
