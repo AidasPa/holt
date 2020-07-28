@@ -1,18 +1,33 @@
 <template>
   <span>
-    <restaurant-image :image="image" />
+    <transition name="fade">
+      <loading
+        :active="loader"
+        :can-cancel="false"
+        :is-full-page="true"
+        :opacity="0.9"
+      />
+    </transition>
+    <restaurant-image :banner="restaurant.banner" />
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">
-        <restaurant-header />
+        <restaurant-header
+          :title="restaurant.title"
+          :description="restaurant.description"
+          :categories="restaurant.categories"
+        />
         <restaurant-bar />
       </d-col>
     </d-row>
   </span>
 </template>
 <script>
+import Loading from 'vue-loading-overlay';
+
 import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
 import RestaurantHeader from '@/components/restaurant/RestaurantHeader.vue';
 import RestaurantBar from '@/components/restaurant/RestaurantBar.vue';
+import api from '@/api/api';
 
 export default {
   props: {
@@ -22,12 +37,27 @@ export default {
     RestaurantImage,
     RestaurantHeader,
     RestaurantBar,
+    Loading,
+  },
+  created() {
+    api.fetchRestaurant(
+      (data) => {
+        this.restaurant = data;
+        this.loader = false;
+      },
+      () => {},
+      this.id,
+    );
   },
   data() {
     return {
-      ...this.$store.getters['restaurants/getRestaurantById'](
-        parseInt(this.id, 10),
-      ),
+      loader: true,
+      restaurant: {
+        banner: {},
+        title: '',
+        description: '',
+        categories: '',
+      },
     };
   },
 };

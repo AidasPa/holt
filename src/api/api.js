@@ -25,7 +25,6 @@ export default {
       const response = await api().get('/restaurants/recent');
       success(response.data);
     } catch (context) {
-      console.log(context);
       failure(context.response.data);
     }
   },
@@ -34,8 +33,15 @@ export default {
       const response = await api().get('/categories');
       success(response.data);
     } catch (context) {
-      console.log(context);
       failure(context.response.data);
+    }
+  },
+  async fetchRestaurant(success, failure, id) {
+    try {
+      const response = await api().get(`/restaurants/${id}`);
+      success(response.data);
+    } catch (context) {
+      failure(context);
     }
   },
 };

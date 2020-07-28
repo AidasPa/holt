@@ -9,9 +9,7 @@ export default {
   async fetchNewRestaurants({ commit }) {
     api.fetchNewRestaurants((data) => {
       commit(SET_NEW_RESTAURANTS, data);
-      setTimeout(() => {
-        commit(HIDE_NEW_RESTAURANTS_LOADER);
-      }, 2000);
+      commit(HIDE_NEW_RESTAURANTS_LOADER);
     }, (error) => {
       console.error(error);
     });
@@ -19,9 +17,7 @@ export default {
   async fetchCategories({ commit }) {
     api.fetchCategories((data) => {
       commit(SET_CATEGORIES, data);
-      setTimeout(() => {
-        commit(HIDE_CATEGORIES_LOADER);
-      }, 2000);
+      commit(HIDE_CATEGORIES_LOADER);
     }, (error) => {
       console.error(error);
     });

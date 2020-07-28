@@ -4,5 +4,6 @@ export default () => ({
   loader: {
     categories: true,
     newRestaurants: true,
+    restaurant: true,
   },
 });

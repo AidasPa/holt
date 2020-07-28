@@ -1,16 +1,28 @@
 <template>
   <d-row class="restaurant-header__content">
     <h1 class="text-white restaurant-title">
-      Chocolaterie CH (Rotušės a.)
+      {{ title }}
     </h1>
-    <h4 class="text-white">Chocolate dream for the whole family</h4>
+    <h4 class="text-white">{{ description }}</h4>
     <h2 class="text-white restaurant-header__currency">€€</h2>
-    <div class="restaurant-header-category">PANCAKES</div>
-    <div class="restaurant-header-category">PANCAKES</div>
-    <div class="restaurant-header-category">PANCAKES</div>
+    <div
+      class="restaurant-header-category"
+      v-for="category in categories"
+      :key="category"
+    >
+      {{ category }}
+    </div>
   </d-row>
 </template>
-
+<script>
+export default {
+  props: {
+    categories: Array,
+    description: String,
+    title: String,
+  },
+};
+</script>
 <style lang="scss">
 .restaurant-title {
   font-size: 5.5rem;
@@ -34,6 +46,11 @@
     margin-left: 10px;
     color: white;
     border-radius: 5px;
+    text-transform: uppercase;
+  }
+  &-category:hover {
+    cursor: pointer;
+    background: #32343a;
   }
 }
 </style>
