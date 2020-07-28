@@ -16,7 +16,7 @@
           :description="restaurant.description"
           :categories="restaurant.categories"
         />
-        <restaurant-bar />
+        <restaurant-bar :rating="restaurant.rating" />
       </d-col>
     </d-row>
   </span>
@@ -56,7 +56,7 @@ export default {
         banner: {},
         title: '',
         description: '',
-        categories: '',
+        categories: [],
       },
     };
   },

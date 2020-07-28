@@ -4,15 +4,21 @@
     <d-card-body class="restaurant-bar__card-body">
       <d-row>
         <!-- <d-col :md="3"> -->
-          <h3 class="restaurant-bar__rating">
-            🥴 8.4
-            <span class="text-muted restaurant-bar__rating--total"
-              >Out of 10</span
-            >
-          </h3>
-          <d-button class="restaurant-bar__button mb-4" outline theme="light">🧡 Favorite</d-button>
-          <d-button class="restaurant-bar__button mb-4" outline theme="light">Order together</d-button>
-          <d-button class="float-right ml-auto mb-4" outline theme="light">Order together</d-button>
+        <h3 class="restaurant-bar__rating">
+          🥴 {{ rating }}
+          <span class="text-muted restaurant-bar__rating--total"
+            >Out of 10</span
+          >
+        </h3>
+        <d-button class="restaurant-bar__button mb-4" outline theme="light"
+          >🧡 Favorite</d-button
+        >
+        <d-button class="restaurant-bar__button mb-4" outline theme="light"
+          >Order together</d-button
+        >
+        <d-button class="float-right ml-auto mb-4" outline theme="light"
+          >Order together</d-button
+        >
         <!-- </d-col>
         <d-col>
         </d-col> -->
@@ -20,6 +26,13 @@
     </d-card-body>
   </d-card>
 </template>
+<script>
+export default {
+  props: {
+    rating: Number,
+  },
+};
+</script>
 <style lang="scss">
 .restaurant-bar {
   margin-top: -70px;
@@ -27,7 +40,7 @@
     margin-left: 25px;
   }
   &__card-body {
-    padding-bottom: .5rem !important;
+    padding-bottom: 0.5rem !important;
   }
   &__rating {
     font-weight: 600;

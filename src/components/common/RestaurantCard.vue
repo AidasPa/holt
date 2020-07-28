@@ -10,7 +10,7 @@
         alt="green lawn grass during daytime"
       />
       <d-card-body class="restaurant-card__body">
-        <h5 class="restaurant-card__text-lead">{{ title }}</h5>
+        <h5 class="restaurant-card__text-lead">{{ formatTitle }}</h5>
         <p class="text-muted">{{ formatDescription }}</p>
       </d-card-body>
       <d-card-footer class="restaurant-card__footer text-muted">
@@ -44,6 +44,10 @@ export default {
           .join('')}...`;
       }
       return this.description;
+    },
+    formatTitle() {
+      const match = this.title.match(/(.*) (\(.*\))/);
+      return match[1];
     },
   },
 };
