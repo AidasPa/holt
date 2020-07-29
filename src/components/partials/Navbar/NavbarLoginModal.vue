@@ -4,7 +4,7 @@
       <d-modal-title>Login</d-modal-title>
     </d-modal-header>
     <d-modal-body>
-      <form>
+      <form @submit.prevent="handleLogin">
         <d-row>
           <d-col :md="12">
             <label class="sr-only" for="f1_Email">Email</label>
@@ -31,7 +31,7 @@
         </d-row>
         <d-row class="mt-2">
           <d-col>
-            <d-button @click="handleLogin" class="w-100 mt-4" theme="primary">Login</d-button>
+            <d-button class="w-100 mt-4" theme="primary">Login</d-button>
           </d-col>
         </d-row>
       </form>

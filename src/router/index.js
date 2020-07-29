@@ -11,6 +11,9 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {
+      shouldStopLoader: true,
+    },
     component: Home,
   },
   {
@@ -39,7 +42,10 @@ router.beforeEach((to, from, next) => {
   window.scrollTo(0, 0);
 
   if ('jwt' in localStorage) {
-    store.dispatch('auth/fetchUser');
+    store.dispatch('loader/setLoader', true);
+    store.dispatch('auth/fetchUser', {
+      shouldStopLoader: 'shouldStopLoader' in to.meta && to.meta.shouldStopLoader,
+    });
   }
   return next();
 });

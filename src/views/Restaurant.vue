@@ -1,13 +1,5 @@
 <template>
   <span>
-    <transition name="fade">
-      <loading
-        :active="loader"
-        :can-cancel="false"
-        :is-full-page="true"
-        :opacity="0.9"
-      />
-    </transition>
     <restaurant-image :banner="restaurant.banner" />
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">
@@ -17,13 +9,12 @@
           :categories="restaurant.categories"
         />
         <restaurant-bar :rating="restaurant.rating" />
-        <restaurant-content :venue="restaurant"/>
+        <restaurant-content :venue="restaurant" />
       </d-col>
     </d-row>
   </span>
 </template>
 <script>
-import Loading from 'vue-loading-overlay';
 import { mapActions } from 'vuex';
 
 import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
@@ -42,14 +33,15 @@ export default {
     RestaurantHeader,
     RestaurantBar,
     RestaurantContent,
-    Loading,
   },
-  created() {
+  mounted() {
+    this.setLoader(true);
+
     this.fetchRestaurantMenu(this.id);
     api.fetchRestaurant(
       (data) => {
         this.restaurant = data;
-        this.loader = false;
+        this.setLoader(false);
       },
       () => {},
       this.id,
@@ -57,7 +49,6 @@ export default {
   },
   data() {
     return {
-      loader: true,
       restaurant: {
         banner: {},
         title: '',
@@ -66,6 +57,9 @@ export default {
       },
     };
   },
-  methods: mapActions('menu', ['fetchRestaurantMenu']),
+  methods: mapActions({
+    setLoader: 'loader/setLoader',
+    fetchRestaurantMenu: 'menu/fetchRestaurantMenu',
+  }),
 };
 </script>
