@@ -12,7 +12,7 @@ export default {
     Navbar,
   },
   mounted() {
-    this.$store.dispatch('restourants/fetchNewRestaurants');
+    // this.$store.dispatch('restaurants/fetchNewRestaurants');
   },
 };
 </script>

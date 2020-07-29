@@ -1,11 +1,6 @@
 <template>
   <span>
-    <d-modal v-if="showLoginModal" @close="hideLoginModal">
-      <d-modal-header>
-        <d-modal-title>Header</d-modal-title>
-      </d-modal-header>
-      <d-modal-body>👋 Hello there!</d-modal-body>
-    </d-modal>
+    <navbar-login-modal v-if="showLoginModal" @close="showLoginModal = false"/>
 
     <d-navbar
       toggleable="md"
@@ -39,7 +34,7 @@
         </d-navbar-nav>
 
         <d-navbar-nav class="ml-auto">
-          <span @click="openLoginModal">
+          <span @click="showLoginModal = true">
             <d-nav-item href="#">Login</d-nav-item>
           </span>
           <d-nav-item href="#">Register</d-nav-item>
@@ -57,7 +52,7 @@
 </template>
 
 <script>
-// import NavbarLoginModal from './NavbarLoginModal.vue';
+import NavbarLoginModal from './NavbarLoginModal.vue';
 
 export default {
   data() {
@@ -65,21 +60,13 @@ export default {
       showLoginModal: false,
     };
   },
-  methods: {
-    openLoginModal() {
-      this.showLoginModal = true;
-    },
-    hideLoginModal() {
-      this.showLoginModal = false;
-    },
-  },
   computed: {
     isRestaurantPage() {
       return this.$route.name === 'Restaurant';
     },
   },
   components: {
-    // NavbarLoginModal,
+    NavbarLoginModal,
   },
 };
 </script>

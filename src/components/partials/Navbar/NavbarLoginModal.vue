@@ -1,9 +1,38 @@
 <template>
-  <d-modal v-if="showModalMutable" @close="handleClose">
+  <d-modal @close="$emit('close')">
     <d-modal-header>
-      <d-modal-title>Header</d-modal-title>
+      <d-modal-title>Login</d-modal-title>
     </d-modal-header>
-    <d-modal-body>👋 Hello there!</d-modal-body>
+    <d-modal-body>
+      <form>
+        <d-row>
+          <d-col :md="12">
+            <label class="sr-only" for="f1_Email">Email</label>
+            <d-input
+              id="f1_Email"
+              class="mb-2 mr-sm-2 mb-sm-0 w-100"
+              placeholder="Email"
+            />
+          </d-col>
+        </d-row>
+        <d-row class="mt-2">
+          <d-col :md="12">
+            <label class="sr-only" for="f1_Password">Password</label>
+            <d-input
+              id="f1_Password"
+              class="mb-2 mr-sm-2 mb-sm-0 w-100"
+              placeholder="Password"
+              type="password"
+            />
+          </d-col>
+        </d-row>
+        <d-row class="mt-2">
+          <d-col>
+            <d-button class="w-100" size="lg" theme="primary">Login</d-button>
+          </d-col>
+        </d-row>
+      </form>
+    </d-modal-body>
   </d-modal>
 </template>
 
@@ -12,18 +41,12 @@ export default {
   props: {
     showModal: Boolean,
   },
-  updated() {
-    console.log(this.showModalMutable);
-  },
-  data() {
-    return {
-      showModalMutable: this.showModal,
-    };
-  },
-  methods: {
-    handleClose() {
-      this.$emit('modalClosed');
-    },
-  },
 };
 </script>
+<style lang="scss">
+.login {
+  &-input {
+    width: 100%;
+  }
+}
+</style>
