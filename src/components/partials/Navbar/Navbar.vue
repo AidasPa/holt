@@ -1,6 +1,6 @@
 <template>
   <span>
-    <navbar-login-modal v-if="showLoginModal" @close="showLoginModal = false"/>
+    <navbar-login-modal v-if="showLoginModal" @close="showLoginModal = false" />
 
     <d-navbar
       toggleable="md"
@@ -25,11 +25,7 @@
             <d-input-group-text slot="prepend">
               <fa class="text-black" :icon="['fas', 'search']" />
             </d-input-group-text>
-            <d-input
-              :class="[isRestaurantPage && 'navbar-transparent-search__input']"
-              size="sm"
-              placeholder="Search..."
-            />
+            <navbar-search :transparent="isRestaurantPage"/>
           </d-input-group>
         </d-navbar-nav>
 
@@ -53,6 +49,7 @@
 
 <script>
 import NavbarLoginModal from './NavbarLoginModal.vue';
+import NavbarSearch from './NavbarSearch.vue';
 
 export default {
   data() {
@@ -67,6 +64,7 @@ export default {
   },
   components: {
     NavbarLoginModal,
+    NavbarSearch,
   },
 };
 </script>
@@ -84,14 +82,5 @@ export default {
     filter: invert(1);
   }
 }
-.navbar-transparent-search {
-  &__input {
-    background-color: transparent !important;
-    border: 1.4px solid white !important;
-    color: white !important;
-    &::placeholder {
-      color: white !important;
-    }
-  }
-}
+
 </style>

@@ -46,8 +46,10 @@ export default {
       return this.description;
     },
     formatTitle() {
-      const match = this.title.match(/(.*) (\(.*\))/);
-      return match[1];
+      const rx = /(.*) (\(.*\))/;
+      const match = this.title.match(rx);
+
+      return rx.test(this.title) ? match[1] : this.title;
     },
   },
 };

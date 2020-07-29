@@ -28,6 +28,7 @@ export default {
   font-size: 5.5rem;
   font-weight: 600;
   line-height: 7rem;
+  width: 100%;
 }
 .restaurant-header {
   &__content {
