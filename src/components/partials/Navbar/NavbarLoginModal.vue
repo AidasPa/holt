@@ -4,6 +4,13 @@
       <d-modal-title>Login</d-modal-title>
     </d-modal-header>
     <d-modal-body>
+      <p
+        class="text-danger text-bold mt-1 mb-1"
+        v-for="error in errors"
+        :key="error"
+      >
+        {{ error }}
+      </p>
       <form @submit.prevent="handleLogin">
         <d-row>
           <d-col :md="12">
@@ -14,6 +21,7 @@
               class="mb-2 mr-sm-2 mb-sm-0 w-100"
               type="email"
               placeholder="Email"
+              required
             />
           </d-col>
         </d-row>
@@ -26,6 +34,7 @@
               class="mb-2 mr-sm-2 mb-sm-0 w-100"
               placeholder="Password"
               type="password"
+              required
             />
           </d-col>
         </d-row>
@@ -40,7 +49,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   props: {
@@ -52,6 +61,9 @@ export default {
       password: '',
     };
   },
+  computed: mapGetters('auth', {
+    errors: 'getLoginErrors',
+  }),
   methods: {
     handleLogin() {
       this.login({ email: this.email, password: this.password });

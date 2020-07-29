@@ -1,5 +1,5 @@
 import {
-  SET_USER, SET_IS_LOGGED_IN, TOGGLE_LOGIN_MODAL, SET_IS_LOGGED_OUT,
+  SET_USER, SET_IS_LOGGED_IN, TOGGLE_LOGIN_MODAL, SET_IS_LOGGED_OUT, SET_LOGIN_ERRORS,
 } from './mutation-types';
 
 export default {
@@ -12,10 +12,17 @@ export default {
     state.loggedIn = true;
   },
   [TOGGLE_LOGIN_MODAL](state) {
-    state.loginModal = !state.loginModal;
+    state.login.modal = !state.login.modal;
   },
   [SET_IS_LOGGED_OUT](state) {
     localStorage.removeItem('jwt');
     state.loggedIn = false;
+  },
+  [SET_LOGIN_ERRORS](state, payload) {
+    let errors = [];
+    Object.keys(payload).forEach((error) => {
+      errors = [...errors, ...payload[error]];
+    });
+    state.login.errors = errors;
   },
 };
