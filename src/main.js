@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import ShardsVue from 'shards-vue';
 import Fragment from 'vue-fragment';
-import twemoji from 'twemoji';
 import VueBlurHash from 'vue-blurhash';
 
 import App from './App.vue';
@@ -17,12 +16,21 @@ Vue.use(ShardsVue);
 Vue.use(Fragment.Plugin);
 Vue.use(VueBlurHash);
 
-Vue.directive('emoji', {
-  inserted(el) {
+Vue.directive('click-outside', {
+  bind(el, binding, vnode) {
     // eslint-disable-next-line no-param-reassign
-    el.innerHTML = twemoji.parse(el.innerHTML);
+    el.clickOutsideEvent = function (event) {
+      if (!(el === event.target || el.contains(event.target))) {
+        vnode.context[binding.expression](event);
+      }
+    };
+    document.body.addEventListener('click', el.clickOutsideEvent);
+  },
+  unbind(el) {
+    document.body.removeEventListener('click', el.clickOutsideEvent);
   },
 });
+
 Vue.config.productionTip = false;
 new Vue({
   router,

@@ -1,6 +1,6 @@
 <template>
   <d-col :md="4" :xs="12">
-    <d-card @click="$router.push('restaurant/' + id)">
+    <d-card @click="$router.push('restaurant/' + id)"  class="restaurant-card">
       <blur-hash-image
         class="card-img-top"
         width="590"
@@ -60,6 +60,7 @@ export default {
   font-weight: 800;
 }
 .restaurant-card {
+  cursor: pointer;
   &__img {
     width: 100%;
   }

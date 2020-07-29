@@ -1,5 +1,5 @@
 <template>
-  <d-col :md="3" class="mt-1">
+  <d-col :md="3" class="mt-1 category">
     <d-img thumbnail :src="image"></d-img>
     <h5 class="category__text">{{ formatTitle }}</h5>
     <p class="text-muted category__count">{{ count }} restaurants</p>
@@ -23,6 +23,7 @@ export default {
 
 <style lang="scss">
 .category {
+  cursor: pointer;
   &__text {
     margin-top: 20px;
     font-weight: 500;

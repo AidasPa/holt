@@ -14,7 +14,7 @@
         <img
           @click="$router.push('/')"
           :src="require('@/assets/img/logo.png')"
-          :class="[isRestaurantPage && 'navbar__img-white']"
+          :class="['navbar__img', isRestaurantPage && 'navbar__img-white']"
           width="80px"
         />
       </d-navbar-brand>
@@ -25,7 +25,7 @@
             <d-input-group-text slot="prepend">
               <fa class="text-black" :icon="['fas', 'search']" />
             </d-input-group-text>
-            <navbar-search :transparent="isRestaurantPage"/>
+            <navbar-search :transparent="isRestaurantPage" />
           </d-input-group>
         </d-navbar-nav>
 
@@ -78,9 +78,11 @@ export default {
     background-color: transparent;
     border-bottom: none !important;
   }
-  &__img-white {
-    filter: invert(1);
+  &__img {
+    cursor: pointer;
+    &--white {
+      filter: invert(1);
+    }
   }
 }
-
 </style>

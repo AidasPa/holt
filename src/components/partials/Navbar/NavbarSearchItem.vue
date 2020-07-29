@@ -1,25 +1,50 @@
 <template>
-  <span>
+  <span class="item" @click="handleItemClick">
     <d-row style="width: 100%;">
       <d-col :md="4">
-        <img
+        <!-- <img
           class="item__img"
-          src="http://localhost:8000/storage/restaurant_images/CPY1QqKt75xaakn3NlVuYIzIVqOuU17Z5iN0cSox.jpeg"
+          :src="image.url"
           alt=""
+        /> -->
+        <blur-hash-image
+          class="item__img"
+          :hash="image.blurhash"
+          :src="image.url"
+          :width="128"
+          :height="72"
         />
       </d-col>
       <d-col>
-        <h5 class="item-content__title">Challenge</h5>
-        <p class="item-content__desc text-muted">Various cruisinces</p>
-        <p class="item-content__info text-muted mt-2">€€ - Vilniaus G - 8.4</p>
+        <h5 class="item-content__title">{{ title }}</h5>
+        <p class="item-content__desc text-muted">{{ description }}</p>
+        <p class="item-content__info text-muted mt-2">€€ · {{ address }}</p>
       </d-col>
     </d-row>
-  <hr>
+    <hr />
   </span>
 </template>
+<script>
+export default {
+  props: {
+    title: String,
+    description: String,
+    image: Object,
+    id: Number,
+    address: String,
+  },
+  methods: {
+    handleItemClick() {
+      this.$emit('should-close');
+      this.$router.push(`/restaurant/${this.id}`).catch(() => {});
+    },
+  },
+};
+</script>
 <style lang="scss">
 .item {
-  &__img {
+  cursor: pointer;
+  &__img > span > img {
     width: 110%;
   }
   &-content {

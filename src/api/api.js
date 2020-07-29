@@ -78,4 +78,13 @@ export default {
       failure(context);
     }
   },
+
+  async fetchSearchResults(success, failure, query) {
+    try {
+      const response = await api().get(`/restaurants/search?query=${query}`);
+      success(response.data);
+    } catch (context) {
+      failure(context);
+    }
+  },
 };
