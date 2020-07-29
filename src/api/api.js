@@ -70,6 +70,15 @@ export default {
     }
   },
 
+  async logout(success, failure) {
+    try {
+      await api().post('/auth/logout');
+      success();
+    } catch (context) {
+      failure(context);
+    }
+  },
+
   async fetchUser(success, failure) {
     try {
       const response = await api().get('/user');

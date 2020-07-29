@@ -1,6 +1,6 @@
 <template>
   <span>
-    <navbar-login-modal v-if="showLoginModal" @close="showLoginModal = false" />
+    <navbar-login-modal v-if="showLoginModal" @close="toggleLoginModal" />
 
     <d-navbar
       toggleable="md"
@@ -31,15 +31,17 @@
 
         <d-navbar-nav class="ml-auto">
           <template v-if="!loggedIn">
-              <span @click="showLoginModal = true">
-                <d-nav-item href="#">Login</d-nav-item>
-              </span>
-              <d-nav-item href="#">Register</d-nav-item>
+            <span @click="toggleLoginModal">
+              <d-nav-item href="#">Login</d-nav-item>
+            </span>
+            <d-nav-item href="#">Register</d-nav-item>
           </template>
           <d-dropdown v-else :text="user.name" is-nav>
             <d-dropdown-item>Cart</d-dropdown-item>
             <d-dropdown-divider />
-            <d-dropdown-item>Logout</d-dropdown-item>
+            <span @click="logout">
+              <d-dropdown-item>Logout</d-dropdown-item>
+            </span>
           </d-dropdown>
         </d-navbar-nav>
       </d-collapse>
@@ -48,17 +50,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 import NavbarLoginModal from './NavbarLoginModal.vue';
 import NavbarSearch from './NavbarSearch.vue';
 
 export default {
-  data() {
-    return {
-      showLoginModal: false,
-    };
-  },
   computed: {
     isRestaurantPage() {
       return this.$route.name === 'Restaurant';
@@ -66,8 +63,10 @@ export default {
     ...mapGetters('auth', {
       loggedIn: 'getIsLoggedIn',
       user: 'getUser',
+      showLoginModal: 'getLoginModal',
     }),
   },
+  methods: mapActions('auth', ['toggleLoginModal', 'logout']),
   components: {
     NavbarLoginModal,
     NavbarSearch,

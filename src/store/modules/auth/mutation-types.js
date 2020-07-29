@@ -1,2 +1,5 @@
 export const SET_IS_LOGGED_IN = 'SET_IS_LOGGED_IN';
+export const SET_IS_LOGGED_OUT = 'SET_IS_LOGGED_OUT';
 export const SET_USER = 'SET_USER';
+
+export const TOGGLE_LOGIN_MODAL = 'TOGGLE_LOGIN_MODAL';
