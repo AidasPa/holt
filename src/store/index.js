@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import restaurants from './modules/restaurants';
 import menu from './modules/menu';
+import auth from './modules/auth';
 
 Vue.use(Vuex);
 
@@ -10,5 +11,6 @@ export default new Vuex.Store({
   modules: {
     restaurants,
     menu,
+    auth,
   },
 });

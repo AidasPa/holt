@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
+// import store from '@/store';
+
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -34,8 +37,10 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   window.scrollTo(0, 0);
+  // if ('jwt' in localStorage) {
+  // if(store.getters['auth/getCurrentUser'])
+  // }
   return next();
-  // ...
 });
 
 export default router;

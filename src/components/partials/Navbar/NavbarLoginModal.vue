@@ -9,6 +9,7 @@
           <d-col :md="12">
             <label class="sr-only" for="f1_Email">Email</label>
             <d-input
+              v-model="email"
               id="f1_Email"
               class="mb-2 mr-sm-2 mb-sm-0 w-100"
               placeholder="Email"
@@ -19,6 +20,7 @@
           <d-col :md="12">
             <label class="sr-only" for="f1_Password">Password</label>
             <d-input
+              v-model="password"
               id="f1_Password"
               class="mb-2 mr-sm-2 mb-sm-0 w-100"
               placeholder="Password"
@@ -28,7 +30,7 @@
         </d-row>
         <d-row class="mt-2">
           <d-col>
-            <d-button class="w-100" size="lg" theme="primary">Login</d-button>
+            <d-button @click="handleLogin" class="w-100" size="lg" theme="primary">Login</d-button>
           </d-col>
         </d-row>
       </form>
@@ -37,9 +39,24 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   props: {
     showModal: Boolean,
+  },
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
+  methods: {
+    handleLogin() {
+      this.login({ email: this.email, password: this.password });
+      console.log();
+    },
+    ...mapActions('auth', ['login']),
   },
 };
 </script>

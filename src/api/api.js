@@ -8,19 +8,20 @@ function createApiInstance() {
       baseURL: API_URL,
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.jwt}`,
       },
     });
   }
-  // eslint-disable-next-line consistent-return
   return axios.create({
     baseURL: API_URL,
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
     },
   });
+
+  // eslint-disable-next-line consistent-return
 }
 
 const api = () => createApiInstance();
@@ -62,9 +63,7 @@ export default {
 
   async login(success, failure, { email, password }) {
     try {
-      const response = await api().post('/auth/login', {
-        email, password,
-      });
+      const response = await api().post('/auth/login', {}, { params: { email, password } });
       success(response.data);
     } catch (context) {
       failure(context);
