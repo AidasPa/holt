@@ -15,7 +15,7 @@
               {{ description }}
             </p>
           </div>
-          <span class="menu-item__card-body-price">€2.00</span>
+          <span class="menu-item__card-body-price">€{{ formatPrice }}</span>
         </d-col>
         <d-col :md="5" style="padding-top: 20px;">
           <blur-hash-image
@@ -38,11 +38,17 @@ export default {
     title: String,
     description: String,
     image: Object,
+    price: Number,
   },
   data() {
     return {
       isSelected: false,
     };
+  },
+  computed: {
+    formatPrice() {
+      return this.price.toFixed(2);
+    },
   },
 };
 </script>

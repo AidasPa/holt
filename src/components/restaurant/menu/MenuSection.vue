@@ -4,8 +4,9 @@
       <d-col :md="12">
         <h4>{{ title }}</h4>
         <menu-item
-          v-for="{ title, description, image, id } in items"
+          v-for="{ title, description, image, price, id } in items"
           :key="id"
+          :price="price"
           :title="title"
           :image="image"
           :description="description"

@@ -3,7 +3,6 @@
   <d-card class="restaurant-bar">
     <d-card-body class="restaurant-bar__card-body">
       <d-row>
-        <!-- <d-col :md="3"> -->
         <h3 class="restaurant-bar__rating">
           🥴 {{ rating }}
           <span class="text-muted restaurant-bar__rating--total"
@@ -13,15 +12,9 @@
         <d-button class="restaurant-bar__button mb-4" outline theme="light"
           >🧡 Favorite</d-button
         >
-        <d-button class="restaurant-bar__button mb-4" outline theme="light"
-          >Order together</d-button
-        >
         <d-button class="float-right ml-auto mb-4" outline theme="light"
-          >Order together</d-button
+          >Search</d-button
         >
-        <!-- </d-col>
-        <d-col>
-        </d-col> -->
       </d-row>
     </d-card-body>
   </d-card>
