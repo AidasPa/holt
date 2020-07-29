@@ -12,6 +12,7 @@
               v-model="email"
               id="f1_Email"
               class="mb-2 mr-sm-2 mb-sm-0 w-100"
+              type="email"
               placeholder="Email"
             />
           </d-col>
@@ -30,7 +31,7 @@
         </d-row>
         <d-row class="mt-2">
           <d-col>
-            <d-button @click="handleLogin" class="w-100" size="lg" theme="primary">Login</d-button>
+            <d-button @click="handleLogin" class="w-100 mt-4" theme="primary">Login</d-button>
           </d-col>
         </d-row>
       </form>
@@ -54,7 +55,6 @@ export default {
   methods: {
     handleLogin() {
       this.login({ email: this.email, password: this.password });
-      console.log();
     },
     ...mapActions('auth', ['login']),
   },

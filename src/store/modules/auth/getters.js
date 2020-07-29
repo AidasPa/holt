@@ -1,3 +1,4 @@
 export default {
-  getCurrentUser: (state) => state.user,
+  getUser: (state) => state.user,
+  getIsLoggedIn: (state) => state.loggedIn,
 };

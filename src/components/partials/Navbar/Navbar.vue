@@ -14,7 +14,7 @@
         <img
           @click="$router.push('/')"
           :src="require('@/assets/img/logo.png')"
-          :class="['navbar__img', isRestaurantPage && 'navbar__img-white']"
+          :class="['navbar__img', isRestaurantPage && 'navbar__img--white']"
           width="80px"
         />
       </d-navbar-brand>
@@ -30,16 +30,16 @@
         </d-navbar-nav>
 
         <d-navbar-nav class="ml-auto">
-          <span @click="showLoginModal = true">
-            <d-nav-item href="#">Login</d-nav-item>
-          </span>
-          <d-nav-item href="#">Register</d-nav-item>
-          <d-dropdown text="Language" is-nav>
-            <d-dropdown-item>Action</d-dropdown-item>
-            <d-dropdown-item>Another action</d-dropdown-item>
-            <d-dropdown-item>Something else here</d-dropdown-item>
+          <template v-if="!loggedIn">
+              <span @click="showLoginModal = true">
+                <d-nav-item href="#">Login</d-nav-item>
+              </span>
+              <d-nav-item href="#">Register</d-nav-item>
+          </template>
+          <d-dropdown v-else :text="user.name" is-nav>
+            <d-dropdown-item>Cart</d-dropdown-item>
             <d-dropdown-divider />
-            <d-dropdown-item>Separated link</d-dropdown-item>
+            <d-dropdown-item>Logout</d-dropdown-item>
           </d-dropdown>
         </d-navbar-nav>
       </d-collapse>
@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import NavbarLoginModal from './NavbarLoginModal.vue';
 import NavbarSearch from './NavbarSearch.vue';
 
@@ -61,6 +63,10 @@ export default {
     isRestaurantPage() {
       return this.$route.name === 'Restaurant';
     },
+    ...mapGetters('auth', {
+      loggedIn: 'getIsLoggedIn',
+      user: 'getUser',
+    }),
   },
   components: {
     NavbarLoginModal,

@@ -14,7 +14,7 @@ export default {
     api.fetchUser((data) => {
       commit(SET_USER, data);
     }, (error) => {
-      console.error(error);
+      console.warn(error);
     });
   },
 };
