@@ -11,7 +11,7 @@
           :title="title"
           :image="image"
           :description="description"
-          @item-clicked="handleItemClick"
+          :restaurant-id="restaurantId"
         />
       </d-col>
     </d-row>
@@ -19,7 +19,6 @@
   </span>
 </template>
 <script>
-import { mapActions } from 'vuex';
 
 import MenuItem from './MenuItem.vue';
 
@@ -33,23 +32,7 @@ export default {
     MenuItem,
   },
   methods: {
-    ...mapActions('cart', {
-      addItem: 'addItem',
-      removeItem: 'removeItem',
-    }),
-    handleItemClick({ item, shouldAdd }) {
-      if (shouldAdd) {
-        this.addItem({
-          restaurant: this.restaurantId,
-          item,
-        });
-      } else {
-        this.removeItem({
-          restaurant: this.restaurantId,
-          item,
-        });
-      }
-    },
+
   },
   computed: {
     items() {

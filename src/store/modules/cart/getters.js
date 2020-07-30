@@ -4,10 +4,9 @@ export default {
     const items = [];
 
     restaurantItemIds.forEach((item) => {
-      items.push(...rootGetters['menu/getMenuItemById'](item.item));
+      items.push({ ...rootGetters['menu/getMenuItemById'](item.item)[0], quantity: item.quantity });
     });
     return items;
   },
-  getAddedItemCountById: (state) => (id) => {
-    return state.cart.filter(item => item.id === id).quantity
-  }
+  getAddedItemCountById: (state) => (id) => state.cart.find((item) => item.item === id)?.quantity,
+};

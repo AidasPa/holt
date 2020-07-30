@@ -31,7 +31,7 @@
         </d-row>
       </d-card-body>
     </d-card>
-    <d-card>
+    <d-card v-if="showOptions">
       <d-card-body>
         <d-row>
           <d-col>
@@ -39,9 +39,11 @@
           </d-col>
           <d-col>
             <d-button-group>
-              <d-button>-</d-button>
-              <d-input />
-              <d-button>+</d-button>
+              <d-button @click="handleDecreaseItemCount">-</d-button>
+              <d-input :value="itemCount" />
+              <span @click="handleIncreaseItemCount">
+                <d-button>+</d-button>
+              </span>
             </d-button-group>
           </d-col>
         </d-row>
@@ -50,6 +52,8 @@
   </span>
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 import MenuItemOptions from './MenuItemOptions.vue';
 
 export default {
@@ -59,22 +63,66 @@ export default {
     image: Object,
     price: Number,
     id: Number,
+    restaurantId: Number,
   },
   data() {
     return {
       isSelected: false,
+      showOptions: false,
     };
   },
   computed: {
     formatPrice() {
       return this.price.toFixed(2);
     },
+    itemCount() {
+      const count = this.$store.getters['cart/getAddedItemCountById'](this.id);
+      return count ?? 0;
+    },
   },
   methods: {
+    handleIncreaseItemCount() {
+      this.increaseItemQuantity({
+        restaurant: this.restaurantId,
+        item: this.id,
+      });
+    },
+    handleDecreaseItemCount() {
+      if (this.itemCount === 1) {
+        this.isSelected = !this.isSelected;
+        this.showOptions = !this.showOptions;
+        this.removeItem({
+          restaurant: this.restaurantId,
+          item: this.id,
+        });
+      } else {
+        this.decreaseItemQuantity({
+          restaurant: this.restaurantId,
+          item: this.id,
+        });
+      }
+    },
     handleAddItem() {
       this.isSelected = !this.isSelected;
-      this.$emit('item-clicked', { item: this.id, shouldAdd: this.isSelected });
+      this.showOptions = !this.showOptions;
+      if (this.isSelected) {
+        this.addItem({
+          restaurant: this.restaurantId,
+          item: this.id,
+        });
+      } else {
+        this.removeItem({
+          restaurant: this.restaurantId,
+          item: this.id,
+        });
+      }
     },
+    ...mapActions('cart', {
+      increaseItemQuantity: 'increaseItemQuantity',
+      decreaseItemQuantity: 'decreaseItemQuantity',
+      addItem: 'addItem',
+      removeItem: 'removeItem',
+    }),
   },
   component: {
     MenuItemOptions,

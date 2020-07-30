@@ -1,6 +1,6 @@
 import {
   ADD_ITEM, REMOVE_ITEM, INC_ITEM, DEC_ITEM,
-} from './mutation-types';
+} from './mutation-typs';
 
 export default {
   addItem({ commit }, { restaurant, item }) {
@@ -9,10 +9,10 @@ export default {
   removeItem({ commit }, { restaurant, item }) {
     commit(REMOVE_ITEM, { restaurant, item });
   },
-  increaseItemCount({ commit }, { restaurant, item }) {
+  increaseItemQuantity({ commit }, { restaurant, item }) {
     commit(INC_ITEM, { restaurant, item });
   },
-  decreaseItemCount({ commit }, { restaurant, item }) {
+  decreaseItemQuantity({ commit }, { restaurant, item }) {
     commit(DEC_ITEM, { restaurant, item });
   },
 };

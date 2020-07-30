@@ -41,7 +41,7 @@ export default {
   computed: {
     addedItemsPrice() {
       const items = this.$store.getters['cart/getAddedItemsByRestaurantId'](1);
-      const reduced = items.reduce((acc, item) => acc + item.price, 0);
+      const reduced = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
       return reduced > 0 ? `€${reduced.toFixed(2)}` : '';
     },
   },
