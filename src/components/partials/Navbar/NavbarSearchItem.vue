@@ -16,7 +16,7 @@
         />
       </d-col>
       <d-col>
-        <h5 class="item-content__title">{{ title }}</h5>
+        <h5 class="item-content__title">{{ formatTitle }}</h5>
         <p class="item-content__desc text-muted">{{ description }}</p>
         <p class="item-content__info text-muted mt-2">€€ · {{ address }}</p>
       </d-col>
@@ -39,6 +39,14 @@ export default {
       this.$router.push(`/restaurant/${this.id}`).catch(() => {});
     },
   },
+  computed: {
+    formatTitle() {
+      const rx = /(.*) (\(.*\))/;
+      const match = this.title.match(rx);
+
+      return rx.test(this.title) ? match[1] : this.title;
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -50,10 +58,11 @@ export default {
   &-content {
     &__title {
       font-weight: 800;
+      margin: 0;
     }
     &__desc {
       margin-bottom: 0 !important;
-      line-height: 0.2rem;
+      line-height: 14px;
     }
     &__info {
       margin-bottom: 0 !important;

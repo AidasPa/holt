@@ -2,6 +2,7 @@ import Vue from 'vue';
 import ShardsVue from 'shards-vue';
 import Fragment from 'vue-fragment';
 import VueBlurHash from 'vue-blurhash';
+import VueScrollTo from 'vue-scrollto';
 
 import App from './App.vue';
 import router from './router';
@@ -17,6 +18,7 @@ import '@fortawesome/fontawesome-free/js/all';
 Vue.use(ShardsVue);
 Vue.use(Fragment.Plugin);
 Vue.use(VueBlurHash);
+Vue.use(VueScrollTo);
 
 Vue.directive('click-outside', {
   bind(el, binding, vnode) {

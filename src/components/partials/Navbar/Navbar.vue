@@ -45,8 +45,6 @@
             </span>
           </template>
           <d-dropdown v-else :text="user.name" is-nav>
-            <d-dropdown-item>Cart</d-dropdown-item>
-            <d-dropdown-divider />
             <span @click="logout">
               <d-dropdown-item>Logout</d-dropdown-item>
             </span>
