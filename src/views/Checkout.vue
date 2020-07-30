@@ -5,26 +5,18 @@
       <d-col :md="7" :xs="12">
         <h1 class="checkout__header-title">Challenge</h1>
         <h4 class="checkout__header-description">Various crusines</h4>
-        <d-row class="checkout__main-row">
-          <d-col :md="8">
-            <d-card>
-              <d-card-body>tes</d-card-body>
-            </d-card>
-          </d-col>
-          <d-col :md="4">
-            <d-card>
-              <d-card-body>tea</d-card-body>
-            </d-card>
-          </d-col>
-        </d-row>
+        <checkout-main-row
+          v-if="'id' in restaurant"
+          :restaurant-id="restaurant.id"
+        />
       </d-col>
     </d-row>
   </span>
 </template>
 <script>
 import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
+import CheckoutMainRow from '@/components/checkout/CheckoutMainRow.vue';
 import api from '@/api/api';
-// import { mapActions } from 'vuex';
 
 export default {
   props: {
@@ -39,7 +31,6 @@ export default {
       parseInt(this.id, 10),
     );
   },
-  // methofd: mapActions('restaurant', 'fetchRestaurant'),
   data() {
     return {
       restaurant: {
@@ -49,6 +40,7 @@ export default {
   },
   components: {
     RestaurantImage,
+    CheckoutMainRow,
   },
 };
 </script>
@@ -64,9 +56,6 @@ export default {
       font-size: 24px;
       color: #fff;
     }
-  }
-  &__main-row {
-    margin-top: 250px;
   }
 }
 </style>
