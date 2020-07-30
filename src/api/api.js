@@ -96,4 +96,13 @@ export default {
       failure(context);
     }
   },
+
+  async fetchGeocodingAddress(success, failure, address) {
+    try {
+      const response = axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
+      success(response.data);
+    } catch (context) {
+      failure(context);
+    }
+  },
 };
