@@ -9,14 +9,14 @@
       <p class="text-white restaurant-navbar__delivery-time">
         <i class="fas fa-bicycle"></i>
         The average delivery time is
-        <b class="restaurant-navbar__delivery-time-minutes">25 min</b>
+        <b class="restaurant-navbar__delivery-time-minutes">{{ avgDeliveryTime }} min</b>
       </p>
     </d-col>
     <div class="float-right">
       <d-button class="restaurant-navbar__cart">
         <i class="fas fa-shopping-bag fa-fw"></i>
         <!-- <span class="ml-2">€2.00 Checkout</span> -->
-        <span class="ml-2">{{ addedItemsPrice }}</span>
+        <span class="ml-2">{{ addedItemsPrice }} Checkout</span>
       </d-button>
     </div>
   </d-row>
@@ -25,6 +25,7 @@
 export default {
   props: {
     restaurantId: Number,
+    avgDeliveryTime: Number,
   },
   data() {
     return {
@@ -40,7 +41,8 @@ export default {
   computed: {
     addedItemsPrice() {
       const items = this.$store.getters['cart/getAddedItemsByRestaurantId'](1);
-      return items.reduce((acc, item) => acc + item.price, 0);
+      const reduced = items.reduce((acc, item) => acc + item.price, 0);
+      return reduced > 0 ? `€${reduced.toFixed(2)}` : '';
     },
   },
   methods: {

@@ -1,6 +1,9 @@
 <template>
   <span>
-    <restaurant-navbar :restaurant-id="restaurant.id" />
+    <restaurant-navbar
+      :restaurant-id="restaurant.id"
+      :avg-delivery-time="restaurant.avg_delivery_time"
+    />
     <restaurant-image :banner="restaurant.banner" />
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">
