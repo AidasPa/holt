@@ -9,4 +9,6 @@ export default {
     return items;
   },
   getAddedItemCountById: (state) => (id) => state.cart.find((item) => item.item === id)?.quantity,
+  // eslint-disable-next-line max-len
+  getItemByIdAndRestaurantId: (state) => ({ item, restaurant }) => state.cart.findIndex((el) => el.item === item && el.restaurant === restaurant),
 };

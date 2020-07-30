@@ -9,9 +9,6 @@
             >Out of 10</span
           >
         </h3>
-        <d-button class="restaurant-bar__button mb-4" outline theme="light"
-          >🧡 Favorite</d-button
-        >
         <d-button class="float-right ml-auto mb-4" outline theme="light"
           >Search</d-button
         >

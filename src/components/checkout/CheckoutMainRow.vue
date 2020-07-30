@@ -36,6 +36,7 @@
               <p class="checkout__check-value">€2.00</p>
             </d-col>
           </d-row>
+          <hr />
           <d-row>
             <hr />
             <d-col>
