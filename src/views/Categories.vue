@@ -2,7 +2,15 @@
   <span>
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">
-        <h4>{{ categoryTitle }}</h4>
+        <h4>
+          {{ categoryTitle }}
+
+          <paginator
+            class="float-right"
+            :page-count="pageCount"
+            @page-changed="fetchRestaurantsByCategory"
+          />
+        </h4>
         <hr />
         <d-row>
           <!-- <restaurant-card-loader v-for="index in 15" :key="index" :loading="getLoader" /> -->
@@ -36,6 +44,7 @@ import { mapActions, mapGetters } from 'vuex';
 import api from '@/api/api';
 import RestaurantCard from '@/components/common/RestaurantCard.vue';
 // import RestaurantCardLoader from '@/components/common/RestaurantCardLoader.vue';
+import Paginator from '@/components/common/Paginator.vue';
 
 export default {
   props: {
@@ -45,20 +54,29 @@ export default {
     return {
       items: [],
       category: {},
+      pageCount: 0,
     };
   },
-  methods: mapActions('loader', ['setLoader']),
   mounted() {
-    api.fetchRestaurantByCategory(
-      (data) => {
-        this.items = data.items;
-        this.category = data.extended_data;
+    // console.log();
+    this.fetchRestaurantsByCategory(this.$route.query.page || null);
+  },
+  methods: {
+    ...mapActions('loader', ['setLoader']),
+    fetchRestaurantsByCategory(page = 1) {
+      this.setLoader(true);
+      api.fetchRestaurantByCategory(
+        (data) => {
+          this.items = data.items;
+          this.category = data.extended_data;
+          this.pageCount = data.per_page + 1;
 
-        this.setLoader(false);
-      },
-      () => {},
-      this.id,
-    );
+          this.setLoader(false);
+        },
+        () => {},
+        { id: this.id, page },
+      );
+    },
   },
   computed: {
     categoryTitle() {
@@ -70,6 +88,7 @@ export default {
   components: {
     RestaurantCard,
     // RestaurantCardLoader,
+    Paginator,
   },
 };
 </script>

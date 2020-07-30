@@ -1,6 +1,7 @@
 <template>
   <span>
     <navbar-login-modal v-if="showLoginModal" @close="toggleLoginModal" />
+    <navbar-register-modal v-if="showRegisterModal" @close="toggleRegisterModal" />
 
     <d-navbar
       toggleable="md"
@@ -35,11 +36,13 @@
                 >Login</d-nav-item
               >
             </span>
-            <d-nav-item
-              href="#"
-              :class="[isRestaurantPage && 'navbar--transparent__item']"
-              >Register</d-nav-item
-            >
+            <span @click="toggleRegisterModal">
+              <d-nav-item
+                href="#"
+                :class="[isRestaurantPage && 'navbar--transparent__item']"
+                >Register</d-nav-item
+              >
+            </span>
           </template>
           <d-dropdown v-else :text="user.name" is-nav>
             <d-dropdown-item>Cart</d-dropdown-item>
@@ -58,23 +61,32 @@
 import { mapGetters, mapActions } from 'vuex';
 
 import NavbarLoginModal from './NavbarLoginModal.vue';
+import NavbarRegisterModal from './NavbarRegisterModal.vue';
 import NavbarSearch from './NavbarSearch.vue';
 
 export default {
   computed: {
     isRestaurantPage() {
-      return this.$route.name === 'Restaurant' || this.$route.name === 'Checkout';
+      return (
+        this.$route.name === 'Restaurant' || this.$route.name === 'Checkout'
+      );
     },
     ...mapGetters('auth', {
       loggedIn: 'getIsLoggedIn',
       user: 'getUser',
       showLoginModal: 'getLoginModal',
+      showRegisterModal: 'getRegisterModal',
     }),
   },
-  methods: mapActions('auth', ['toggleLoginModal', 'logout']),
+  methods: mapActions('auth', [
+    'toggleLoginModal',
+    'toggleRegisterModal',
+    'logout',
+  ]),
   components: {
     NavbarLoginModal,
     NavbarSearch,
+    NavbarRegisterModal,
   },
 };
 </script>

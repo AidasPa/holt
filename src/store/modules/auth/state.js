@@ -5,4 +5,8 @@ export default () => ({
     modal: false,
     errors: [],
   },
+  register: {
+    modal: false,
+    errors: [],
+  },
 });

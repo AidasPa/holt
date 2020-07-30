@@ -15,19 +15,25 @@
       </p>
     </d-col>
     <div class="float-right">
-      <d-button class="restaurant-navbar__cart">
+      <d-button
+        @click="$router.push(`/restaurant/${restaurantId}/checkout`)"
+        class="restaurant-navbar__cart"
+        v-if="loggedIn"
+      >
         <i class="fas fa-shopping-bag fa-fw"></i>
         <!-- <span class="ml-2">€2.00 Checkout</span> -->
-        <span
-          class="ml-2"
-          @click="$router.push(`/restaurant/${restaurantId}/checkout`)"
-          >{{ addedItemsPrice }} Checkout</span
-        >
+        <span class="ml-2">{{ addedItemsPrice }} Checkout</span>
+      </d-button>
+      <d-button v-else>
+        <i class="fas fa-shopping-bag fa-fw"></i>
+        <span class="ml-2">Login to checkout!</span>
       </d-button>
     </div>
   </d-row>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   props: {
     restaurantId: Number,
@@ -46,13 +52,16 @@ export default {
   },
   computed: {
     addedItemsPrice() {
-      const items = this.$store.getters['cart/getAddedItemsByRestaurantId'](1);
+      const items = this.$store.getters['cart/getAddedItemsByRestaurantId'](this.restaurantId);
       const reduced = items.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0,
       );
       return reduced > 0 ? `€${reduced.toFixed(2)}` : '';
     },
+    ...mapGetters('auth', {
+      loggedIn: 'getIsLoggedIn',
+    }),
   },
   methods: {
     handleScroll() {

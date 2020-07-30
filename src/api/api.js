@@ -79,6 +79,15 @@ export default {
     }
   },
 
+  async register(success, failure, params) {
+    try {
+      const response = await api().post('/auth/register', {}, { params });
+      success(response.data);
+    } catch (context) {
+      failure(context);
+    }
+  },
+
   async fetchUser(success, failure) {
     try {
       const response = await api().get('/user');
@@ -97,9 +106,9 @@ export default {
     }
   },
 
-  async fetchRestaurantByCategory(success, failure, id) {
+  async fetchRestaurantByCategory(success, failure, { id, page }) {
     try {
-      const response = await api().get(`/categories/${id}`);
+      const response = await api().get(`/categories/${id}?page=${page}`);
       success(response.data);
     } catch (context) {
       failure(context);

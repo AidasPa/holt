@@ -1,13 +1,13 @@
 <template>
   <span>
     <d-card
-      :class="['menu-item__card', isSelected || isSelectedInitial && 'menu-item__card--selected']"
+      :class="['menu-item__card', isSelected && 'menu-item__card--selected']"
     >
       <d-card-body class="menu-item__card-body">
         <d-row>
           <d-col :md="1">
             <span @click="handleAddItem" class="menu-item__plus">
-              {{ isSelected || isSelectedInitial ? '-' : '+' }}
+              {{ isSelected ? '-' : '+' }}
             </span>
           </d-col>
           <d-col>
@@ -31,7 +31,7 @@
         </d-row>
       </d-card-body>
     </d-card>
-    <d-card v-if="showOptions || isSelectedInitial">
+    <d-card v-if="showOptions">
       <d-card-body>
         <d-row>
           <d-col>
@@ -113,7 +113,7 @@ export default {
     handleAddItem() {
       this.isSelected = !this.isSelected;
       this.showOptions = !this.showOptions;
-      if (this.isSelected || this.isSelectedInitial) {
+      if (this.isSelected) {
         this.addItem({
           restaurant: this.restaurantId,
           item: this.id,
