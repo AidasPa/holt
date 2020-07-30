@@ -31,7 +31,6 @@
   </d-card>
 </template>
 <script>
-
 export default {
   props: {
     title: String,
@@ -53,8 +52,7 @@ export default {
   methods: {
     handleAddItem() {
       this.isSelected = !this.isSelected;
-      console.log(this.id);
-      this.$emit('item-clicked', this.id);
+      this.$emit('item-clicked', { item: this.id, shouldAdd: this.isSelected });
       // this.addItem({
       //   restaurant: 1,
       //   item: [

@@ -15,13 +15,17 @@
     <div class="float-right">
       <d-button class="restaurant-navbar__cart">
         <i class="fas fa-shopping-bag fa-fw"></i>
-        <span class="ml-2">€2.00 Checkout</span>
+        <!-- <span class="ml-2">€2.00 Checkout</span> -->
+        <span class="ml-2">{{ addedItemsPrice }}</span>
       </d-button>
     </div>
   </d-row>
 </template>
 <script>
 export default {
+  props: {
+    restaurantId: Number,
+  },
   data() {
     return {
       shouldBeFixed: false,
@@ -31,7 +35,13 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
   },
   destroyed() {
-    window.removeEventListener('scroll');
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  computed: {
+    addedItemsPrice() {
+      const items = this.$store.getters['cart/getAddedItemsByRestaurantId'](1);
+      return items.reduce((acc, item) => acc + item.price, 0);
+    },
   },
   methods: {
     handleScroll() {

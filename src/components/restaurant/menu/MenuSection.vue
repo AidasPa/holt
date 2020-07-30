@@ -11,7 +11,7 @@
           :title="title"
           :image="image"
           :description="description"
-          @item-clicked="handleAddItem"
+          @item-clicked="handleItemClick"
         />
       </d-col>
     </d-row>
@@ -35,13 +35,20 @@ export default {
   methods: {
     ...mapActions('cart', {
       addItem: 'addItem',
+      removeItem: 'removeItem',
     }),
-    handleAddItem(item) {
-      console.log(item, this.restaurantId);
-      this.addItem({
-        restaurant: 2,
-        item: 1,
-      });
+    handleItemClick({ item, shouldAdd }) {
+      if (shouldAdd) {
+        this.addItem({
+          restaurant: this.restaurantId,
+          item,
+        });
+      } else {
+        this.removeItem({
+          restaurant: this.restaurantId,
+          item,
+        });
+      }
     },
   },
   computed: {

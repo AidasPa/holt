@@ -5,4 +5,5 @@ export default {
     // console.log(menu.items[0].category_id, id);/
     return menu.items.filter((item) => item.category_id === id);
   },
+  getMenuItemById: ({ menu }) => (id) => menu.items.filter((item) => item.id === id),
 };

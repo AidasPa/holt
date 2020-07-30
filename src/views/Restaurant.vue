@@ -1,6 +1,6 @@
 <template>
   <span>
-    <restaurant-navbar />
+    <restaurant-navbar :restaurant-id="restaurant.id" />
     <restaurant-image :banner="restaurant.banner" />
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">

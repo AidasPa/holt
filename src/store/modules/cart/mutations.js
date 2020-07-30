@@ -1,11 +1,17 @@
-import { ADD_ITEM } from './mutation-types';
+import { ADD_ITEM, REMOVE_ITEM } from './mutation-types';
 
 export default {
   [ADD_ITEM](state, payload) {
-    if (payload.restaurant in state.cart) {
-      state.cart[payload.restaurant] = [...state.cart[payload.restaurant], payload.item];
-    } else {
-      state.cart[payload.restaurant] = [payload.item];
-    }
+    // const itemIndex = state.cart.findIndex((item) => item.item === payload.item);
+    // if (itemIndex > -1) {
+    //   state.cart.splice(itemIndex);
+    // } else {
+    state.cart = [...state.cart, { restaurant: payload.restaurant, item: payload.item }];
+    // }
+  },
+  [REMOVE_ITEM](state, payload) {
+    // eslint-disable-next-line max-len
+    const itemIndex = state.cart.findIndex((item) => item.id === payload.id && item.restaurant === payload.restaurant);
+    state.cart.splice(itemIndex, 1);
   },
 };
