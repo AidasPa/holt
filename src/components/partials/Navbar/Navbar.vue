@@ -63,7 +63,7 @@ import NavbarSearch from './NavbarSearch.vue';
 export default {
   computed: {
     isRestaurantPage() {
-      return this.$route.name === 'Restaurant';
+      return this.$route.name === 'Restaurant' || this.$route.name === 'Checkout';
     },
     ...mapGetters('auth', {
       loggedIn: 'getIsLoggedIn',

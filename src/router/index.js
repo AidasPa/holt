@@ -30,6 +30,15 @@ const routes = [
     props: true,
     component: () => import(/* webpackChunkName: "about" */ '../views/Restaurant.vue'),
   },
+  {
+    path: '/restaurant/:id/checkout',
+    name: 'Checkout',
+    props: true,
+    meta: {
+      shouldStopLoader: true,
+    },
+    component: () => import(/* webpackChunkName: "about" */ '../views/Checkout.vue'),
+  },
 ];
 
 const router = new VueRouter({
