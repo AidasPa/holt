@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'shards-ui/dist/css/shards.css';
 import 'vue-blurhash/dist/vue-blurhash.css';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+import '@fortawesome/fontawesome-free/js/all';
 
 Vue.use(ShardsVue);
 Vue.use(Fragment.Plugin);

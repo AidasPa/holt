@@ -22,9 +22,6 @@
       <d-collapse is-nav id="nav-collapse">
         <d-navbar-nav class="ml-auto">
           <d-input-group seamless :class="[]">
-            <d-input-group-text slot="prepend">
-              <fa class="text-black" :icon="['fas', 'search']" />
-            </d-input-group-text>
             <navbar-search :transparent="isRestaurantPage" />
           </d-input-group>
         </d-navbar-nav>
@@ -32,9 +29,17 @@
         <d-navbar-nav class="ml-auto">
           <template v-if="!loggedIn">
             <span @click="toggleLoginModal">
-              <d-nav-item href="#">Login</d-nav-item>
+              <d-nav-item
+                :class="[isRestaurantPage && 'navbar--transparent__item']"
+                href="#"
+                >Login</d-nav-item
+              >
             </span>
-            <d-nav-item href="#">Register</d-nav-item>
+            <d-nav-item
+              href="#"
+              :class="[isRestaurantPage && 'navbar--transparent__item']"
+              >Register</d-nav-item
+            >
           </template>
           <d-dropdown v-else :text="user.name" is-nav>
             <d-dropdown-item>Cart</d-dropdown-item>
@@ -79,9 +84,14 @@ export default {
   border-bottom: 1px solid lightgrey;
   padding-left: 400px !important;
   padding-right: 400px !important;
+  padding-top: 0px !important;
+  margin-top: 20px;
   &--transparent {
     background-color: transparent;
     border-bottom: none !important;
+    &__item > a {
+      color: white !important;
+    }
   }
   &__img {
     cursor: pointer;

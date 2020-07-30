@@ -1,5 +1,6 @@
 <template>
   <span>
+    <restaurant-navbar />
     <restaurant-image :banner="restaurant.banner" />
     <d-row class="holt-row mt-4">
       <d-col :md="7" :xs="12">
@@ -21,6 +22,7 @@ import RestaurantImage from '@/components/restaurant/RestaurantImage.vue';
 import RestaurantHeader from '@/components/restaurant/RestaurantHeader.vue';
 import RestaurantBar from '@/components/restaurant/RestaurantBar.vue';
 import RestaurantContent from '@/components/restaurant/RestaurantContent.vue';
+import RestaurantNavbar from '@/components/restaurant/RestaurantNavbar.vue';
 
 import api from '@/api/api';
 
@@ -33,6 +35,7 @@ export default {
     RestaurantHeader,
     RestaurantBar,
     RestaurantContent,
+    RestaurantNavbar,
   },
   mounted() {
     this.setLoader(true);
