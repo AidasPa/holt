@@ -1,7 +1,7 @@
 <template>
-  <d-col :md="3" class="mt-1 category">
+  <d-col :md="3" class="mt-1 category" >
     <d-img thumbnail :src="image"></d-img>
-    <h5 class="category__text">{{ formatTitle }}</h5>
+    <h5 @click="$router.push(`/categories/${id}`)" class="category__text">{{ formatTitle }}</h5>
     <p class="text-muted category__count">{{ count }} restaurants</p>
   </d-col>
 </template>
@@ -12,6 +12,7 @@ export default {
     title: String,
     count: Number,
     image: String,
+    id: Number,
   },
   computed: {
     formatTitle() {

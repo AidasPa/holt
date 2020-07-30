@@ -11,6 +11,7 @@
         :title="title"
         :image="image"
         :count="restaurant_count"
+        :id="id"
       />
     </d-row>
   </span>
