@@ -69,7 +69,7 @@ export default {
         (data) => {
           this.items = data.items;
           this.category = data.extended_data;
-          this.pageCount = data.per_page + 1;
+          this.pageCount = data.total;
 
           this.setLoader(false);
         },
