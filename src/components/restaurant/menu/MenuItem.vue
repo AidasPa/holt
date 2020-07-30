@@ -1,36 +1,57 @@
 <template>
-  <d-card
-    @click="handleAddItem"
-    :class="['menu-item__card', isSelected && 'menu-item__card--selected']"
-  >
-    <d-card-body class="menu-item__card-body">
-      <d-row>
-        <d-col :md="1">
-          <span class="menu-item__plus">+</span>
-        </d-col>
-        <d-col>
-          <h4 class="menu-item__card-body-title">{{ title }}</h4>
-          <div class="menu-item__card-body-description__wrapper">
-            <p class="text-muted">
-              {{ description }}
-            </p>
-          </div>
-          <span class="menu-item__card-body-price">€{{ formatPrice }}</span>
-        </d-col>
-        <d-col :md="5" style="padding-top: 20px;">
-          <blur-hash-image
-            width="600"
-            height="337.5"
-            class="menu-item__card-body-image"
-            :hash="image.blurhash"
-            :src="image.url"
-          />
-        </d-col>
-      </d-row>
-    </d-card-body>
-  </d-card>
+  <span>
+    <d-card
+      :class="['menu-item__card', isSelected && 'menu-item__card--selected']"
+    >
+      <d-card-body class="menu-item__card-body">
+        <d-row>
+          <d-col :md="1">
+            <span @click="handleAddItem" class="menu-item__plus">
+              {{ isSelected ? '-' : '+' }}
+            </span>
+          </d-col>
+          <d-col>
+            <h4 class="menu-item__card-body-title">{{ title }}</h4>
+            <div class="menu-item__card-body-description__wrapper">
+              <p class="text-muted">
+                {{ description }}
+              </p>
+            </div>
+            <span class="menu-item__card-body-price">€{{ formatPrice }}</span>
+          </d-col>
+          <d-col :md="5" style="padding-top: 20px;">
+            <blur-hash-image
+              width="600"
+              height="337.5"
+              class="menu-item__card-body-image"
+              :hash="image.blurhash"
+              :src="image.url"
+            />
+          </d-col>
+        </d-row>
+      </d-card-body>
+    </d-card>
+    <d-card>
+      <d-card-body>
+        <d-row>
+          <d-col>
+            <p class="menu-item__subcard-text">Quantity:</p>
+          </d-col>
+          <d-col>
+            <d-button-group>
+              <d-button>-</d-button>
+              <d-input />
+              <d-button>+</d-button>
+            </d-button-group>
+          </d-col>
+        </d-row>
+      </d-card-body>
+    </d-card>
+  </span>
 </template>
 <script>
+import MenuItemOptions from './MenuItemOptions.vue';
+
 export default {
   props: {
     title: String,
@@ -53,15 +74,10 @@ export default {
     handleAddItem() {
       this.isSelected = !this.isSelected;
       this.$emit('item-clicked', { item: this.id, shouldAdd: this.isSelected });
-      // this.addItem({
-      //   restaurant: 1,
-      //   item: [
-      //     {
-      //       wow: 1,
-      //     },
-      //   ],
-      // });
     },
+  },
+  component: {
+    MenuItemOptions,
   },
 };
 </script>
@@ -70,8 +86,14 @@ export default {
   &__plus {
     font-size: 35px;
     cursor: pointer;
+    -webkit-user-select: none;
   }
-
+  &__subcard {
+    &-text {
+      margin: 0;
+      line-height: 35px;
+    }
+  }
   &__card {
     box-shadow: none;
     border-radius: 0 !important;

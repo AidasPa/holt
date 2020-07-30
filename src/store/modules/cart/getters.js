@@ -8,4 +8,6 @@ export default {
     });
     return items;
   },
-};
+  getAddedItemCountById: (state) => (id) => {
+    return state.cart.filter(item => item.id === id).quantity
+  }
