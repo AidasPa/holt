@@ -1,6 +1,6 @@
 <template>
   <d-col :md="4" :xs="12">
-    <d-card @click="$router.push('restaurant/' + id)"  class="restaurant-card">
+    <d-card @click="$router.push('/restaurant/' + id)"  class="restaurant-card">
       <blur-hash-image
         class="card-img-top"
         width="590"

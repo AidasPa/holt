@@ -24,8 +24,8 @@
               <p class="checkout__check-value">€{{ formatTotalItemPrice }}</p>
             </d-col>
           </d-row>
-          <hr />
           <d-row v-if="formatTotalItemPrice < 8">
+          <hr />
             <d-col>
               <p class="checkout__check-key">Small order surcharge</p>
               <p class="checkout__check-key--description text-muted">

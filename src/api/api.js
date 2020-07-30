@@ -96,4 +96,13 @@ export default {
       failure(context);
     }
   },
+
+  async fetchRestaurantByCategory(success, failure, id) {
+    try {
+      const response = await api().get(`/categories/${id}`);
+      success(response.data);
+    } catch (context) {
+      failure(context);
+    }
+  },
 };
