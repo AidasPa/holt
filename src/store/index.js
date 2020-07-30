@@ -5,6 +5,7 @@ import restaurants from './modules/restaurants';
 import menu from './modules/menu';
 import auth from './modules/auth';
 import loader from './modules/loader';
+import cart from './modules/cart';
 
 Vue.use(Vuex);
 
@@ -14,5 +15,6 @@ export default new Vuex.Store({
     menu,
     auth,
     loader,
+    cart,
   },
 });

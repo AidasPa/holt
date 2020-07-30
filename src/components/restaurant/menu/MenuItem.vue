@@ -1,6 +1,6 @@
 <template>
   <d-card
-    @click="isSelected = !isSelected"
+    @click="handleAddItem"
     :class="['menu-item__card', isSelected && 'menu-item__card--selected']"
   >
     <d-card-body class="menu-item__card-body">
@@ -31,7 +31,6 @@
   </d-card>
 </template>
 <script>
-/* eslint-disable indent */
 
 export default {
   props: {
@@ -39,6 +38,7 @@ export default {
     description: String,
     image: Object,
     price: Number,
+    id: Number,
   },
   data() {
     return {
@@ -48,6 +48,21 @@ export default {
   computed: {
     formatPrice() {
       return this.price.toFixed(2);
+    },
+  },
+  methods: {
+    handleAddItem() {
+      this.isSelected = !this.isSelected;
+      console.log(this.id);
+      this.$emit('item-clicked', this.id);
+      // this.addItem({
+      //   restaurant: 1,
+      //   item: [
+      //     {
+      //       wow: 1,
+      //     },
+      //   ],
+      // });
     },
   },
 };

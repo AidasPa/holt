@@ -17,6 +17,7 @@
         :key="id"
         :title="title"
         :id="id"
+        :restaurant-id="venue.id"
       />
     </d-col>
     <d-col :md="3">

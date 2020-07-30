@@ -42,15 +42,14 @@ export default {
 </script>
 <style lang="scss">
 .restaurant-navbar {
-  // position: fixed;
   padding-left: 400px;
   padding-right: 380px;
   width: 100%;
-  // margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   transition: 1s;
   margin: 0;
+  position: absolute;
   &--fixed {
     z-index: 999;
     position: fixed;
@@ -61,7 +60,6 @@ export default {
     }
   }
   &__cart {
-    // font-size: 18px;
     font-weight: bold;
     margin: 0;
   }
